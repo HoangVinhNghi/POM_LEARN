@@ -1,19 +1,30 @@
 package facebook.web.newfeeds;
 
-import org.testng.annotations.Test;
-import org.testng.annotations.BeforeTest;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
 
 public class NewTest {
-  @Test
-  public void f() {
-  }
-  @BeforeTest
+	WebDriver driver;
+	String projectLocation = System.getProperty("user.dir");
+	
+	@BeforeTest
   public void beforeTest() {
+		System.setProperty("webdriver.chrome.driver", projectLocation + "\\libs\\chromedriver.exe");
+		driver = new ChromeDriver();	
+		
+	//Navigating through a particular website
+	driver.get("https://www.browserstack.com");
   }
 
-  @AfterTest
-  public void afterTest() {
-  }
+	@Test
+	public void f() {
+	}
+
+	@AfterTest
+	public void afterTest() {
+	}
 
 }

@@ -49,5 +49,6 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="libs/chromedriver.exe"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
