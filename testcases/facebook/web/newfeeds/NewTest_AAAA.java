@@ -6,7 +6,7 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-public class NewTest {
+public class NewTest_AAAA {
 	WebDriver driver;
 	String projectLocation = System.getProperty("user.dir");
 	
