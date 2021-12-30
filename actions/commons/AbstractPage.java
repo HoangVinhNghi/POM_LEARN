@@ -80,7 +80,7 @@ public class AbstractPage {
 		alert.dismiss();
 	}
 
-	public void sendKeyToAlert(WebDriver dri ver, String value) {
+	public void sendKeyToAlert(WebDriver driver, String value) {
 		alert = waitForAlertPresence(driver);
 		alert.sendKeys(value);
 	}
@@ -1038,8 +1038,6 @@ public class AbstractPage {
 		}
 
 		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(GlobalConstants.LONG_TIMEOUT, TimeUnit.SECONDS);
-		driver.get(GlobalConstants.PRODUCT_APP_URL);
 		return driver;
 	}
 
@@ -1087,7 +1085,6 @@ public class AbstractPage {
 		}
 
 		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(GlobalConstants.LONG_TIMEOUT, TimeUnit.SECONDS);
 		driver.get(appUrl);
 		return driver;
 	}
@@ -1115,8 +1112,7 @@ public class AbstractPage {
 			pass = false;
 
 			// Add lỗi vào ReportNG
-			VerificationFailures.getFailures().addFailureForTest(Reporter.getCurrentTestResult(), e);
-			Reporter.getCurrentTestResult().setThrowable(e);
+
 		}
 		return pass;
 	}
@@ -1136,8 +1132,7 @@ public class AbstractPage {
 			Assert.assertFalse(condition);
 		} catch (Throwable e) {
 			pass = false;
-			VerificationFailures.getFailures().addFailureForTest(Reporter.getCurrentTestResult(), e);
-			Reporter.getCurrentTestResult().setThrowable(e);
+
 		}
 		return pass;
 	}
@@ -1154,8 +1149,7 @@ public class AbstractPage {
 		} catch (Throwable e) {
 			pass = false;
 			log.info(" -------------------------- FAILED -------------------------- ");
-			VerificationFailures.getFailures().addFailureForTest(Reporter.getCurrentTestResult(), e);
-			Reporter.getCurrentTestResult().setThrowable(e);
+
 		}
 		return pass;
 	}

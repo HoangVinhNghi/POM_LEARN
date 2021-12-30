@@ -31,7 +31,7 @@ import java.util.concurrent.TimeUnit;
 
 public class Login_01_RegisterAndLogin extends AbstractPage {
     WebDriver driver;
-    private String email,password,registerSuccessMsg;
+    private String email,password, registerSuccessMsg;
     private HomePageObject homePage;
     private LoginPageObject loginPage;
     private RegisterPageObject registerPage;
@@ -40,13 +40,16 @@ public class Login_01_RegisterAndLogin extends AbstractPage {
     public void beforeClass() {
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
-        File file = new File(System.getProperty("user.dir") + "/Libs/Selectorhub3.3.crx");
-        options.addArguments("--incognito");
-        options.addExtensions(file);
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         driver.manage().window().maximize();
         openPageUrl(driver,"https://demo.nopcommerce.com/");
+
+        // Khoi tao Page Object
+        homePage = new HomePageObject(driver);
+        loginPage = new LoginPageObject(driver);
+        registerPage = new RegisterPageObject(driver);
+
         //Generate random email
         email = "corona"+getRandomNumber()+"@hotmail.com";
         password = "123456";
@@ -56,33 +59,46 @@ public class Login_01_RegisterAndLogin extends AbstractPage {
     public void TC_01_RegisterToSystem() {
         // Click to Register link Home Page -> Register Page
         registerPage = homePage.clickToRegisterLink();
+
         // Click male radio button
         registerPage.clickToMaleRadioButton();
+
         // Input firstname
-        registerPage.inputToFirstNameTextbox("");
+        registerPage.inputToFirstNameTextbox("nghi");
+
         // Input lastname
-        registerPage.inputToLastNameTextbox("");
+        registerPage.inputToLastNameTextbox("hoang");
+
         // Select day of birth
-        registerPage.selectDayDropdown("");
+        registerPage.selectDayDropdown("1");
+
         // Select month of birth
-        registerPage.selectMonthDropdown("");
+        registerPage.selectMonthDropdown("August");
+
         // Select year of birth
-        registerPage.selectYearDropdown("");
+        registerPage.selectYearDropdown("1988");
+
         // Input Email text box
-        registerPage.inputEmailTextbox("");
+        registerPage.inputEmailTextbox(email);
+
         // Input Company text box
-        registerPage.inputCopanyTextbox("");
+        registerPage.inputCompanyTextbox("JK Company");
+
         // Input Password text box
-        registerPage.inputPasswordTextbox("");
+        registerPage.inputPasswordTextbox(password);
+
         // Input Confirm Password text box
-        registerPage.inputConfirmPasswordTextbox("");
+        registerPage.inputConfirmPasswordTextbox(password);
+
         // Click to Register button
         registerPage.clickToRegisterButton();
+
         // Verify Register success message
         registerSuccessMsg = registerPage.getRegisterSuccessMsg();
+        Assert.assertEquals(registerSuccessMsg, "Your registration completed");
+
         // Log out -> Home Page
         homePage = registerPage.clickToLogOutLink();
-
     }
 
     @Test
@@ -90,9 +106,9 @@ public class Login_01_RegisterAndLogin extends AbstractPage {
         // Click Login link -> Login page
         loginPage = homePage.clickToLoginLink();
         // Input email text box
-        loginPage.inputEmail("");
+        loginPage.inputEmail(email);
         // Input password text box
-        loginPage.inputPassword("");
+        loginPage.inputPassword(password);
         // Click to Login button
         homePage = loginPage.clickToLoginButton();
         // Verify My Account Link is display
