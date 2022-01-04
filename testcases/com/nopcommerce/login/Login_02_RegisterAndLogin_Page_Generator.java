@@ -16,7 +16,7 @@ import pageObjects.RegisterPageObject;
 
 import java.util.concurrent.TimeUnit;
 
-public class Login_01_RegisterAndLogin_Page_Generator {
+public class Login_02_RegisterAndLogin_Page_Generator {
     WebDriver driver;
     private String email,password, registerSuccessMsg;
     private HomePageObject homePage;
@@ -34,8 +34,8 @@ public class Login_01_RegisterAndLogin_Page_Generator {
 
         // Khoi tao Page Object
         homePage = PageGeneratorManager.getHomepage(driver);
-        loginPage = new LoginPageObject(driver);
-        registerPage = new RegisterPageObject(driver);
+        loginPage = PageGeneratorManager.getLoginPage(driver);
+        registerPage = PageGeneratorManager.getRegisterPage(driver);
 
         //Generate random email
         email = "corona"+ registerPage.getRandomNumber()+"@hotmail.com";

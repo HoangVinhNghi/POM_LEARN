@@ -21,7 +21,7 @@ public class HomePageObject extends AbstractPage {
     public LoginPageObject clickToLoginLink() {
         waitForElementClickable(driver, HomePageUI.LOGIN_LINK);
         clickToElement(driver, HomePageUI.LOGIN_LINK);
-        return new LoginPageObject(driver);
+        return PageGeneratorManager.getLoginPage(driver);
     }
 
     public boolean isMyAccountLinkDisplayed() {

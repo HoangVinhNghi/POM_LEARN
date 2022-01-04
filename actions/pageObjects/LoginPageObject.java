@@ -1,6 +1,7 @@
 package pageObjects;
 
 import commons.AbstractPage;
+import commons.PageGeneratorManager;
 import org.openqa.selenium.WebDriver;
 import pageUIs.LoginPageUI;
 
@@ -22,6 +23,6 @@ private WebDriver driver;
     public HomePageObject clickToLoginButton() {
         waitForElementClickable(driver, LoginPageUI.LOGIN_BUTTON);
         clickToElement(driver, LoginPageUI.LOGIN_BUTTON);
-        return new HomePageObject(driver);
+        return PageGeneratorManager.getHomepage(driver);
     }
 }
