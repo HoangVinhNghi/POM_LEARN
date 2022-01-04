@@ -1,13 +1,9 @@
 package com.nopcommerce.login;
 
 
-import atu.testrecorder.ATUTestRecorder;
-import atu.testrecorder.exceptions.ATUTestRecorderException;
-
-import commons.AbstractPage;
+import commons.PageGeneratorManager;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.Assert;
@@ -18,18 +14,9 @@ import pageObjects.HomePageObject;
 import pageObjects.LoginPageObject;
 import pageObjects.RegisterPageObject;
 
-import java.awt.*;
-import java.awt.datatransfer.DataFlavor;
-import java.awt.datatransfer.UnsupportedFlavorException;
-import java.io.File;
-import java.io.IOException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-public class Login_01_RegisterAndLogin {
+public class Login_01_RegisterAndLogin_Page_Generator {
     WebDriver driver;
     private String email,password, registerSuccessMsg;
     private HomePageObject homePage;
@@ -46,7 +33,7 @@ public class Login_01_RegisterAndLogin {
         driver.get("https://demo.nopcommerce.com/");
 
         // Khoi tao Page Object
-        homePage = new HomePageObject(driver);
+        homePage = PageGeneratorManager.getHomepage(driver);
         loginPage = new LoginPageObject(driver);
         registerPage = new RegisterPageObject(driver);
 
