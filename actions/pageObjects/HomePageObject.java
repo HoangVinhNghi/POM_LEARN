@@ -25,7 +25,20 @@ public class HomePageObject extends AbstractPage {
     }
 
     public boolean isMyAccountLinkDisplayed() {
-        waitForAllElementVisible(driver, HomePageUI.MY_ACCOUNT_LINK);
-        return isElementDisplayed(driver, HomePageUI.MY_ACCOUNT_LINK);
+        waitForAllElementVisible(driver, HomePageUI.HEADER_MY_ACCOUNT_LINK);
+        return isElementDisplayed(driver, HomePageUI.HEADER_MY_ACCOUNT_LINK);
+    }
+
+
+    public FooterMyAccountPageObject openFooterMyAccountPage() {
+        waitForAllElementVisible(driver, HomePageUI.FOOTER_MY_ACCOUNT_LINK);
+        clickToElement(driver, HomePageUI.FOOTER_MY_ACCOUNT_LINK);
+        return PageGeneratorManager.getFooterMyAccountPage(driver);
+    }
+
+    public FooterSearchPageObject openFooterSearchPage() {
+        waitForAllElementVisible(driver, HomePageUI.FOOTER_SEARCH_LINK);
+        clickToElement(driver, HomePageUI.FOOTER_SEARCH_LINK);
+        return PageGeneratorManager.getFooterSearchPage(driver);
     }
 }
