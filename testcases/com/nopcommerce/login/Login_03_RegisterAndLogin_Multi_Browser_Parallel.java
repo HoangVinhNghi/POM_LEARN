@@ -3,12 +3,7 @@ package com.nopcommerce.login;
 
 import commons.AbstractTest;
 import commons.PageGeneratorManager;
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.firefox.FirefoxOptions;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -18,14 +13,15 @@ import pageObjects.HomePageObject;
 import pageObjects.LoginPageObject;
 import pageObjects.RegisterPageObject;
 
-import java.util.concurrent.TimeUnit;
-
 public class Login_03_RegisterAndLogin_Multi_Browser_Parallel extends AbstractTest {
     WebDriver driver;
     private String email,password, registerSuccessMsg;
     private HomePageObject homePage;
     private LoginPageObject loginPage;
     private RegisterPageObject registerPage;
+
+    public Login_03_RegisterAndLogin_Multi_Browser_Parallel() {
+    }
 
     @Parameters({"browser", "url"})
     @BeforeClass

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Nop Commerce" parallel="tests" thread-count="1">
+    <parameter name="url" value="https://demo.nopcommerce.com/" />
+
+    <listeners>
+    <listener class-name="org.uncommons.reportng.HTMLReporter"/>
+    <listener class-name="org.uncommons.reportng.JUnitXMLReporter" />
+    <listener class-name="commons.MethodListener" />
+    </listeners>
+
+
+    <test name="Run on CHROME">
+        <parameter name="browser" value="chrome" />
+        <classes>
+        <class name ="com.nopcommerce.login.Login_05_RegisterAndLogin_Assert_Verify_Log_Report"/>
+        </classes>
+    </test>
+</suite>

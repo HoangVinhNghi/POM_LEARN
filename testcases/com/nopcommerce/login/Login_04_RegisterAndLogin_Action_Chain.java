@@ -21,6 +21,9 @@ public class Login_04_RegisterAndLogin_Action_Chain extends AbstractTest {
     private FooterNewProductPageObject newProductPage;
     private FooterSearchPageObject searchPage;
 
+    public Login_04_RegisterAndLogin_Action_Chain() {
+    }
+
 
     @Parameters({"browser", "url"})
     @BeforeClass
